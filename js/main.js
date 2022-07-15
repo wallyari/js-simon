@@ -16,23 +16,25 @@ e quali dei numeri da indovinare sono stati individuati.*/
 
 //Genero 5 numeri random da inserire nel div.result-output
 for ( let i = 1; i <= 5; i++){
-    document.getElementById(`num-${i}`).innerHTML = randomInt(1, 150);
+    document.getElementById(`num-${i}`).innerHTML += ` : ${randomInt(1, 1000)}`;;
 }
 let resultOutput = document.querySelector('#result-output');
-let userCorrectAnswer = 0 ;
+let userCorrectAnswers = 0 ;
 
 setTimeout(function() {
-    document.querySelector('#numbers-group').classList.add('d-none');
-    for ( let i = 1; i <= 5; i++){
-        let userAnswer = parseInt(prompt(`Inserisci numero ${i} `));
-        console.log(userAnswer);
-        if (document.getElementById(`num-${i}`).innerHTML == userAnswer){
-        userCorrectAnswer++;
-        resultOutput.innerHTML += ` Numero indovinato dallo user ${i} `
+        document.querySelector('#numbers-group').classList.add('d-none');
+        for (let i = 1; i <= 5; i++){
+                let userAnswer;
+ 	    while(isNaN(userAnswer)){
+ 	            userAnswer = parseInt(prompt(`Inserisci il numero ${i} `));
+		}
+    if (document.getElementById(`num-${i}`).innerHTML = userAnswer){
+        userCorrectAnswers++;
+        resultOutput.innerHTML += `<span class="d-none"> Numero indovinato dall'utente ${i}. </span>`;
         }
     }
-    resultOutput.innerHTML += `User ha indovinato ${userCorrectAnswer} numbers`
-}, 3000);
+    resultOutput.innerHTML += `l'utente ha indovinato ${userCorrectAnswers} numbers.`;
+    }, 1000);
 
 
 
